@@ -1,15 +1,23 @@
-# COPYRIGHT © 2021-22 BY LEGENDX22 🔥
-# NOW PUBLIC BY LEGENDX
 import os
-os.system("pip install Telethon==1.21.1")
+os.system("pip install Telethon")  # استخدم أحدث إصدار
+
 from telethon import TelegramClient, events, functions, types
-api_id = os.environ.get("APP_ID")
-import os, asyncio
-from os import system
-from telethon.tl.types import ChannelParticipantsAdmins, ChannelParticipantAdmin, ChannelParticipantCreator
+import os, asyncio, logging
+
+# استخدام APP_ID بدلاً من API_ID
+api_id = os.environ.get("APP_ID")  # أو غيرها إلى API_ID
 api_hash = os.environ.get("API_HASH")
 token = os.environ.get("BOT_TOKEN")
-client = TelegramClient('Xarmy', api_id, api_hash).start(bot_token=token)
+
+# تحقق من وجود جميع المتغيرات
+if not all([api_id, api_hash, token]):
+    missing = []
+    if not api_id: missing.append("APP_ID")
+    if not api_hash: missing.append("API_HASH") 
+    if not token: missing.append("BOT_TOKEN")
+    raise ValueError(f"Missing environment variables: {', '.join(missing)}")
+
+client = TelegramClient('Xarmy', int(api_id), api_hash).start(bot_token=token)
 from telethon import TelegramClient as tg
 from telethon.tl.functions.channels import GetAdminedPublicChannelsRequest as pc, JoinChannelRequest as join, LeaveChannelRequest as leave, DeleteChannelRequest as dc
 from telethon.sessions import StringSession as ses
