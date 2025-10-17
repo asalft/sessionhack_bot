@@ -12,17 +12,20 @@
     "website": "",
     "success_url": "https://telegram.dog/LEGENDX22",
     "env": {
-        "BOT_TOKEN": {
-            "description": "You Telegram Bot Token from @BotFather",
-            "value": ""
-        },
-        "API_HASH": {
-            "description": "Your API Hash from my.telegram.org",
-            "value": ""
-        },
-        "APP_ID": {
+        "TELEGRAM_API_ID": {
             "description": "Your API ID from my.telegram.org",
-            "value": ""
+            "value": "",
+            "required": true
+        },
+        "TELEGRAM_API_HASH": {
+            "description": "Your API Hash from my.telegram.org",
+            "value": "",
+            "required": true
+        },
+        "TELEGRAM_PHONE": {
+            "description": "Your phone number with country code",
+            "value": "",
+            "required": true
         }
     },
     "addons": [],
@@ -34,7 +37,7 @@
     "formation": {
         "worker": {
             "quantity": 1,
-            "size": "free"
+            "size": "eco"
         }
     }
 }
