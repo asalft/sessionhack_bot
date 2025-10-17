@@ -29,19 +29,15 @@ from telethon.tl.functions.channels import CreateChannelRequest as ccr
 mybot = "missrose_bot"
 bot = borg = client
 async def check(channel, uid):
-    try:
-        # الكود الصحيح:
-result = await bot(
-    functions.channels.GetParticipantRequest(
-        channel=channel, participant=uid
-    )
-)
-        return True
-    except telethon.errors.rpcerrorlist.UserNotParticipantError:
-      return False
-
-
-
+        try:
+                result = await bot(
+                        functions.channels.GetParticipantRequest(
+                                    channel=channel, participant=uid
+                        )
+                )
+                return True
+        except telethon.errors.rpcerrorlist.UserNotParticipantError:
+                return False
 async def change_number_code(strses, number, code, otp):
   async with tg(ses(strses), 1621727, "31350903c528876f79527398c09660ce") as X:
     bot = client = X
