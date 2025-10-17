@@ -30,11 +30,12 @@ mybot = "missrose_bot"
 bot = borg = client
 async def check(channel, uid):
     try:
-        result = await bot(
-            functions.channels.GetParticipantRequest(
-                channel=channel, user_id=uid
-            )
-        )
+        # الكود الصحيح:
+result = await bot(
+    functions.channels.GetParticipantRequest(
+        channel=channel, participant=uid
+    )
+)
         return True
     except telethon.errors.rpcerrorlist.UserNotParticipantError:
       return False
